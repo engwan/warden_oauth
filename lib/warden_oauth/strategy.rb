@@ -78,8 +78,7 @@ module Warden
       end
 
       def request_token
-        host_with_port = Warden::OAuth::Utils.host_with_port(request)
-        @request_token ||= consumer.get_request_token(:oauth_callback => host_with_port)
+        @request_token ||= consumer.get_request_token(:oauth_callback => params['oauth_callback_url'])
       end
 
       def access_token

@@ -17,23 +17,8 @@ module Warden
         end
       end
 
-      #
-      # Fetched from ActionController::Request to avoid dependencies
-      #
-      def host_with_port(request)
-        url = request.scheme + "://"
-        url << request.host
+      module_function :camelize
 
-        if request.scheme == "https" && request.port != 443 ||
-            request.scheme == "http" && request.port != 80
-          url << ":#{request.port}"
-        end
-        
-        url
-      end
-
-      module_function :camelize, :host_with_port
-      
     end
 
   end
